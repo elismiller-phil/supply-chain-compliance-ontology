@@ -1,4 +1,4 @@
-# fantastic-chainsaw
+# supply-chain-compliance-ontology
 supply chain compliance ontology
 
 This repository contains exploratory ontology modeling work based on a
