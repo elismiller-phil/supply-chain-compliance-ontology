@@ -1,0 +1,119 @@
+@prefix : <http://example.org/scco#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:SCCO rdf:type owl:Ontology ;
+    rdfs:label "Supply Chain Compliance Ontology" .
+
+### Classes
+
+:Organization rdf:type owl:Class ;
+    rdfs:label "Organization" .
+
+:Manufacturer rdf:type owl:Class ;
+    rdfs:subClassOf :Organization ;
+    rdfs:label "Manufacturer" .
+
+:Laboratory rdf:type owl:Class ;
+    rdfs:subClassOf :Organization ;
+    rdfs:label "Laboratory" .
+
+:AuditingOrganization rdf:type owl:Class ;
+    rdfs:subClassOf :Organization ;
+    rdfs:label "Auditing Organization" .
+
+:GovernmentAgency rdf:type owl:Class ;
+    rdfs:subClassOf :Organization ;
+    rdfs:label "Government Agency" .
+
+:SupplyChain rdf:type owl:Class ;
+    rdfs:label "Supply Chain" .
+
+:Ingredient rdf:type owl:Class ;
+    rdfs:label "Ingredient" .
+
+:ProductStandard rdf:type owl:Class ;
+    rdfs:label "Product Standard" .
+
+:KnowledgeGap rdf:type owl:Class ;
+    rdfs:label "Knowledge Gap" .
+
+### Object Properties
+
+:participatesIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Organization ;
+    rdfs:range :SupplyChain ;
+    rdfs:label "participates in" .
+
+:tests rdf:type owl:ObjectProperty ;
+    rdfs:domain :Laboratory ;
+    rdfs:range :Ingredient ;
+    rdfs:label "tests" .
+
+:audits rdf:type owl:ObjectProperty ;
+    rdfs:domain :AuditingOrganization ;
+    rdfs:range :Manufacturer ;
+    rdfs:label "audits" .
+
+:regulatedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Manufacturer ;
+    rdfs:range :GovernmentAgency ;
+    rdfs:label "regulated by" .
+
+:requiresComplianceWith rdf:type owl:ObjectProperty ;
+    rdfs:domain :Manufacturer ;
+    rdfs:range :ProductStandard ;
+    rdfs:label "requires compliance with" .
+
+:hasKnowledgeGap rdf:type owl:ObjectProperty ;
+    rdfs:domain :SupplyChain ;
+    rdfs:range :KnowledgeGap ;
+    rdfs:label "has knowledge gap" .
+
+### Individuals
+
+:UNPA rdf:type :Organization ;
+    rdfs:label "United Natural Products Alliance" .
+
+:FTZ rdf:type :GovernmentAgency ;
+    rdfs:label "Foreign Trade Zone Program" .
+
+:NSF rdf:type :ProductStandard ;
+    rdfs:label "NSF Standard" .
+
+:NSP rdf:type :ProductStandard ;
+    rdfs:label "NSP Standard" .
+
+:ChinaUSSupplyChain rdf:type :SupplyChain ;
+    rdfs:label "China-US Supply Chain" .
+
+:ChinaUSRegulationDifference rdf:type :KnowledgeGap ;
+    rdfs:label "China-US Regulation Comparison Gap" .
+
+:AcmeManufacturer rdf:type :Manufacturer ;
+    rdfs:label "Example Manufacturer" .
+
+:LabA rdf:type :Laboratory ;
+    rdfs:label "Example Testing Laboratory" .
+
+:AuditGroup1 rdf:type :AuditingOrganization ;
+    rdfs:label "Example Auditing Group" .
+
+:IngredientBatch1 rdf:type :Ingredient ;
+    rdfs:label "Example Ingredient Batch" .
+
+### Example Assertions
+
+:UNPA :participatesIn :ChinaUSSupplyChain .
+
+:LabA :tests :IngredientBatch1 .
+
+:AuditGroup1 :audits :AcmeManufacturer .
+
+:AcmeManufacturer :requiresComplianceWith :NSF .
+:AcmeManufacturer :requiresComplianceWith :NSP .
+
+:AcmeManufacturer :regulatedBy :FTZ .
+
+:ChinaUSSupplyChain :hasKnowledgeGap :ChinaUSRegulationDifference .
