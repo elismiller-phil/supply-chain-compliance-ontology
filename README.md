@@ -14,3 +14,26 @@ The domain includes:
 - ingredient testing
 - communication across organizations
 - knowledge gaps in supply chain governance
+
+The domain motivating the ontology includes communication challenges
+between organizations such as manufacturers, laboratories, auditing groups,
+regulatory bodies, and trade authorities.
+
+## Repository Structure
+
+ontology/
+  Core ontology prototype written in OWL/Turtle.
+
+competency-questions/
+  Questions the ontology should support.
+
+notes/
+  Domain notes from workshop discussions.
+
+diagrams/
+  Informal conceptual diagrams describing the domain.
+
+## Status
+
+This ontology is an early-stage modeling exercise intended for learning
+and experimentation in applied ontology and knowledge graph design.
